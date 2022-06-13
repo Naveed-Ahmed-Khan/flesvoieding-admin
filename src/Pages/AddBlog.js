@@ -39,16 +39,18 @@ const AddBlog = () => {
   const formik = useFormik({
     initialValues: {
       title: "",
-      content: "",
+      description: "",
+      link: "",
     },
     enableReinitialize: true,
     onSubmit: async (values) => {
       console.log(values);
 
-      if (values.title && values.content) {
+      if (values.title && values.description) {
         addBlog({
           title: values.title,
-          content: values.content,
+          description: values.description,
+          link: values.link.trim().length > 0 ? values.link : "test",
           imagePath: imagePath,
         });
         navigate("/dashboard");
@@ -104,13 +106,21 @@ const AddBlog = () => {
               onChange={formik.handleChange}
               value={formik.values.title}
             />
+            <Input
+              width="full"
+              type="text"
+              name="link"
+              label="Link"
+              onChange={formik.handleChange}
+              value={formik.values.link}
+            />
             <TextArea
               type="text"
               rows={6}
               placeholder="Content"
-              name="content"
+              name="description"
               onChange={formik.handleChange}
-              value={formik.values.content}
+              value={formik.values.description}
             />
 
             <div>

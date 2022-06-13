@@ -61,7 +61,8 @@ const EditBlog = () => {
   const formik = useFormik({
     initialValues: {
       title: blog?.title,
-      content: blog?.content,
+      description: blog?.description,
+      link: blog?.link === "test" ? "" : blog?.link,
       imagePath: blog?.imagePath,
     },
     enableReinitialize: true,
@@ -70,7 +71,8 @@ const EditBlog = () => {
         updateBlog(
           {
             title: values.title,
-            content: values.content,
+            description: values.description,
+            link: values.link.trim().length > 0 ? values.link : "test",
           },
           blogId
         );
@@ -78,7 +80,8 @@ const EditBlog = () => {
         updateBlog(
           {
             title: values.title,
-            content: values.content,
+            description: values.description,
+            link: values.link.trim().length > 0 ? values.link : "test",
             imagePath: imagePath,
           },
           blogId
@@ -142,14 +145,22 @@ const EditBlog = () => {
               onChange={formik.handleChange}
               value={formik.values.title}
             />
+            <Input
+              width="full"
+              type="text"
+              name="link"
+              label="Link"
+              onChange={formik.handleChange}
+              value={formik.values.link}
+            />
 
             <TextArea
-              rows={6}
+              rows={8}
               type="text"
               label="Content"
-              name="address"
+              name="description"
               onChange={formik.handleChange}
-              value={formik.values.content}
+              value={formik.values.description}
             />
           </section>
 

@@ -25,8 +25,13 @@ const Sidebar = (props) => {
   const sidebarList = [
     { key: "1", name: "Blogs", route: "/dashboard" },
     { key: "3", name: "Add Blog", route: "/dashboard/add-blog" },
-    { key: "4", name: "Blog Links", route: "/dashboard/blogLinks" },
-    { key: "5", name: "Add Blog Link", route: "/dashboard/add-blogLink" },
+    {
+      key: "4",
+      name: "Terms And Conditions",
+      route: "/dashboard/termsandconditions",
+    },
+    // { key: "4", name: "Blog Links", route: "/dashboard/blogLinks" },
+    // { key: "5", name: "Add Blog Link", route: "/dashboard/add-blogLink" },
     { key: "10", name: "Logout", route: "/", logout: true },
   ];
 

@@ -11,6 +11,7 @@ import { db } from "../api/firebase-config";
 const useBlog = () => {
   const blogsCollectionRef = collection(db, "blogs");
   const blogLinkCollectionRef = collection(db, "blogLinks");
+  const termsCollectionRef = collection(db, "terms");
 
   const addBlog = async (values) => {
     await addDoc(blogsCollectionRef, values);
@@ -36,6 +37,10 @@ const useBlog = () => {
     const categoryDoc = doc(blogLinkCollectionRef, blogId);
     await updateDoc(categoryDoc, values);
   };
+  const updateTerms = async (values, blogId) => {
+    const categoryDoc = doc(termsCollectionRef, blogId);
+    await updateDoc(categoryDoc, values);
+  };
 
   return {
     addBlog,
@@ -44,6 +49,7 @@ const useBlog = () => {
     deleteBlog,
     updateBlogLink,
     updateBlog,
+    updateTerms,
   };
 };
 

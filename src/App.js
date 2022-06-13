@@ -7,6 +7,7 @@ import EditBlog from "./Components/DisplayItems/EditBlog";
 import AddBlogLink from "./Pages/AddBlogLink";
 import AllBlogs from "./Pages/AllBlogs";
 import EditBlogLink from "./Components/DisplayItems/EditBlogLink";
+import TermsAndConditions from "./Pages/TermsAndConditions";
 
 function App() {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -18,6 +19,10 @@ function App() {
           <Route path="/dashboard" element={<MainPage />}>
             <Route index element={<Blogs />} />
             <Route path="/dashboard/blogs" element={<Blogs />} />
+            <Route
+              path="/dashboard/termsandconditions"
+              element={<TermsAndConditions />}
+            />
             <Route path="/dashboard/blogLinks" element={<AllBlogs />} />
             <Route path="/dashboard/add-blog" element={<AddBlog />} />
             <Route path="/dashboard/add-blogLink" element={<AddBlogLink />} />
