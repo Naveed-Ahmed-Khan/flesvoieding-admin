@@ -12,6 +12,7 @@ import InputFile from "../Components/UI/InputFile";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../api/firebase-config";
 import Spinner from "../Components/UI/Spinner";
+import { serverTimestamp } from "firebase/firestore";
 
 const AddBlog = () => {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const AddBlog = () => {
           title: values.title,
           description: values.description,
           link: values.link.trim().length > 0 ? values.link : "test",
+          uploadTime: serverTimestamp(),
           imagePath: imagePath,
         });
         navigate("/dashboard");
